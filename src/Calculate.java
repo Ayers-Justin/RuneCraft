@@ -1,5 +1,8 @@
 public class Calculate {
 
+    /* Class to use the limiting reagent as the basis for single rune calculations.
+    Use integer array to calculate crafts from user input.
+    * */
     public static void calcRunes(int[] numReagents){
         if(Reagent.numReag == 2){
             int primary = numReagents[0] / 50;
@@ -29,6 +32,9 @@ public class Calculate {
         }
     }
 
+    /* The following 3 methods simply find the smallest number from the given numbers to use
+    * to determine how many rune crafts are possible with the given inputs.
+    * */
     public static int smaller(int primary, int secondary){
         return(Math.min(primary, secondary));
     }
@@ -51,6 +57,8 @@ public class Calculate {
         return(Math.min(min, min2));
     }
 
+    /* Output the calculated numbers based on user input.
+    * */
     public static void runeNumbers(int runes, int cost){
         int price = runes * cost;
         int legend = (int) (runes * 0.03);
