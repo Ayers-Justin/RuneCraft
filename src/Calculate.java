@@ -1,30 +1,4 @@
 public class Calculate {
-    /**public static void calcRunes(int primary, int secondary){
-        primary = primary / 50;
-        secondary = secondary / 25;
-
-        int runes = smaller(primary, secondary);
-        runeNumbers(runes, 20000);
-    }
-
-    public static void calcRunes(int primary, int secondary, int tertiary){
-        primary = primary / 18;
-        secondary = secondary / 6;
-        tertiary = tertiary / 12;
-
-        int runes = smaller(primary, secondary, tertiary);
-        runeNumbers(runes, 15000);
-    }
-
-    public static void calcRunes(int primary, int secondary, int tertiary, int quaternary){
-        primary = primary / 60;
-        secondary = secondary / 20;
-        tertiary = tertiary / 12;
-        quaternary = quaternary / 60;
-
-        int runes = smaller(primary, secondary, tertiary, quaternary);
-        runeNumbers(runes, 15000);
-    }*/
 
     public static void calcRunes(int[] numReagents){
         if(Reagent.numReag == 2){

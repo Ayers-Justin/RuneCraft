@@ -95,45 +95,6 @@ public class Reagent {
         }
     }
 
-    /**public static void reagentList(String item1, String item2){
-        System.out.println("Please enter the number of " + item1 + ": ");
-        int primary = getInput();
-        System.out.println("Please enter the number of " + item2 + ": ");
-        int secondary = getInput();
-
-        if(!isBalance) {
-            Calculate.calcRunes(primary, secondary);
-        }
-    }
-
-    public static void reagentList(String item1, String item2, String item3){
-        System.out.println("Please enter the number of " + item1 + ": ");
-        int primary = getInput();
-        System.out.println("Please enter the number of " + item2 + ": ");
-        int secondary = getInput();
-        System.out.println("Please enter the number of " + item3 + ": ");
-        int tertiary = getInput();
-
-        if(!isBalance) {
-            Calculate.calcRunes(primary, secondary, tertiary);
-        }
-    }
-
-    public static void reagentList(String item1, String item2, String item3, String item4){
-        System.out.println("Please enter the number of " + item1 + ": ");
-        int primary = getInput();
-        System.out.println("Please enter the number of " + item2 + ": ");
-        int secondary = getInput();
-        System.out.println("Please enter the number of " + item3 + ": ");
-        int tertiary = getInput();
-        System.out.println("Please enter the number of " + item4 + ": ");
-        int quaternary = getInput();
-
-        if(!isBalance) {
-            Calculate.calcRunes(primary, secondary, tertiary, quaternary);
-        }
-    }*/
-
     public static int[] reagentList(String[] array){
         int[] numReagents = {0, 0, 0, 0};
         for(int i = 0; i < array.length; i++) {
@@ -201,63 +162,5 @@ public class Reagent {
         }
         Balance.optimizeReagents(new boolean[] {isGiants, isDragons, isNecro});
 
-
-
-
-        /*System.out.println("Giants: " + isGiants);
-        System.out.println("Dragons: " + isDragons);
-        System.out.println("Necropolis: " + isNecro);
-
-        System.out.println("Please enter the first rune.");
-        for(int i = 0; i < 1; i++) {
-            try {
-                r1 = input.nextLine();
-                rune1 = runeType(r1);
-                if(rune1[0].equals("error")){
-                    throw new IllegalArgumentException("error");
-                }
-            } catch (IllegalArgumentException exception) {
-                System.out.println("Please choose a valid rune.");
-                i--;
-            }
-        }
-        System.out.println("Please enter the second rune.");
-        for(int i = 0; i < 1; i++) {
-            try {
-                r2 = input.nextLine();
-                rune2 = runeType(r2);
-                if(rune2[0].equals("error")){
-                    throw new IllegalArgumentException("error");
-                }
-            } catch (IllegalArgumentException exception) {
-                System.out.println("Please choose a valid rune.");
-                i--;
-            }
-        }
-
-        reagentList(rune1);
-        reagentList(rune2);
-        System.out.println(r1 + ": ");
-        for(int i = 0; i < rune1.length; i++){
-            System.out.println(rune1[i] + " ");
-        }
-
-        System.out.println(r2 + ": ");
-        for(int i = 0; i < rune2.length; i++){
-            System.out.println(rune2[i] + " ");
-        }
-
-        System.out.println("common reagent: " + shareReagent());*/
     }
-
-    /*public static String shareReagent(){
-        for(int i = 0; rune2.length < 4; i++){
-            for(int j = 0; j < rune1.length; j++){
-                if(rune1[i].equals(rune2[j])){
-                    return rune1[i];
-                }
-            }
-        }
-        return "none";
-    }*/
 }
