@@ -19,7 +19,7 @@ public class Intro {
         Scanner choice = new Scanner(System.in);
         String rune = choice.nextLine();
         runeName = rune;
-        
+
         if (rune.equals("quit")){
         System.exit(0);
         }

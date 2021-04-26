@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class Calculate {
 
     /* Class to use the limiting reagent as the basis for single rune calculations.
@@ -60,10 +62,12 @@ public class Calculate {
     /* Output the calculated numbers based on user input.
     * */
     public static void runeNumbers(int runes, int cost){
-        int price = runes * cost;
+        DecimalFormat df = new DecimalFormat("#,###");
+        String mana = df.format((long) cost * runes);
+
         int legend = (int) (runes * 0.03);
         System.out.println("You can craft " + runes + " " + Intro.runeName + " runes!" );
-        System.out.println("That will cost you " + price + " mana! Make sure to stock up!");
+        System.out.println("That will cost you " + mana + " mana! Make sure to stock up!");
         System.out.println("With that many crafts, you should get approximately " + legend + " Legendary 6* runes!");
         System.out.println("To try a different rune, enter the type of rune you wish to craft. Type \"quit\" to exit.");
         Intro.choose();
