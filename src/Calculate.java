@@ -1,10 +1,10 @@
 public class Calculate {
-    public static void calcRunes(int primary, int secondary){
+    /**public static void calcRunes(int primary, int secondary){
         primary = primary / 50;
         secondary = secondary / 25;
 
         int runes = smaller(primary, secondary);
-        runeNumbers(runes, true);
+        runeNumbers(runes, 20000);
     }
 
     public static void calcRunes(int primary, int secondary, int tertiary){
@@ -13,7 +13,7 @@ public class Calculate {
         tertiary = tertiary / 12;
 
         int runes = smaller(primary, secondary, tertiary);
-        runeNumbers(runes, false);
+        runeNumbers(runes, 15000);
     }
 
     public static void calcRunes(int primary, int secondary, int tertiary, int quaternary){
@@ -23,7 +23,36 @@ public class Calculate {
         quaternary = quaternary / 60;
 
         int runes = smaller(primary, secondary, tertiary, quaternary);
-        runeNumbers(runes, false);
+        runeNumbers(runes, 15000);
+    }*/
+
+    public static void calcRunes(int[] numReagents){
+        if(Reagent.numReag == 2){
+            int primary = numReagents[0] / 50;
+            int secondary = numReagents[1] / 25;
+
+            int runes = smaller(primary, secondary);
+            runeNumbers(runes, 20000);
+        }
+        else if(Reagent.numReag == 3){
+            int primary = numReagents[0] / 18;
+            int secondary = numReagents[1] / 6;
+            int tertiary = numReagents[2] / 12;
+
+            int runes = smaller(primary, secondary, tertiary);
+            runeNumbers(runes, 15000);
+
+        }
+        else{
+            int primary = numReagents[0] / 60;
+            int secondary = numReagents[1] / 20;
+            int tertiary = numReagents[2] / 12;
+            int quaternary = numReagents[3] / 60;
+
+            int runes = smaller(primary, secondary, tertiary, quaternary);
+            runeNumbers(runes, 15000);
+
+        }
     }
 
     public static int smaller(int primary, int secondary){
@@ -48,9 +77,9 @@ public class Calculate {
         return(Math.min(min, min2));
     }
 
-    public static void runeNumbers(int runes, boolean type){
-        int price = runes * (!type ? 15000 : 20000);
-        int legend = (int) (runes * .03);
+    public static void runeNumbers(int runes, int cost){
+        int price = runes * cost;
+        int legend = (int) (runes * 0.03);
         System.out.println("You can craft " + runes + " " + Intro.runeName + " runes!" );
         System.out.println("That will cost you " + price + " mana! Make sure to stock up!");
         System.out.println("With that many crafts, you should get approximately " + legend + " Legendary 6* runes!");
