@@ -11,12 +11,12 @@ public class Balance {
 
     public static void optimizeReagents(boolean[] balanceTypes){
         /* Acquire user input and ensures the input is valid. Uses bool array to find the excluded dungeon type.
-        * */
+         * */
         String[] reagentTypes = {"Green Symbols", "Red Symbols", "Purple Symbols", "Rune Pieces"};
 
         for(int i = 0; i < reagentTypes.length; i++){
             System.out.println("Please enter the number of " + reagentTypes[i] + ": ");
-            reagentTotals[i] = Reagent.getInput();
+            reagentTotals[i] = Reagents.getInput();
         }
 
         if (Arrays.equals(balanceTypes, new boolean[]{false, true, true})) {
@@ -188,9 +188,9 @@ public class Balance {
 
         System.out.println("You can craft a total of " + totalCraft + " runes!");
 
-        for(int i = 0; i < Reagent.listRunesBalance.length; i++){
-            if(!Reagent.listRunesBalance[i].equals(" ")){
-                System.out.println(Reagent.listRunesBalance[i] + ": " + runes[i]);
+        for(int i = 0; i < Reagents.listRunesBalance.length; i++){
+            if(!Reagents.listRunesBalance[i].equals(" ")){
+                System.out.println(Reagents.listRunesBalance[i] + ": " + runes[i]);
             }
         }
 

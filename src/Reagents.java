@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Reagent {
+public class Reagents {
     public static Scanner input = new Scanner(System.in);
     public static boolean isBalance = false;
     public static String[] rune = {""}; // array to store rune ingredients.
@@ -12,7 +12,7 @@ public class Reagent {
     public static String[] listRunesBalance = {" "," "," "}; // array to store user rune choices
 
     /* Determine what ingredients are required. Set flags as needed
-    * */
+     * */
     public static String[] runeType(String rune) {
         String runeTL = rune.toLowerCase();
         switch (runeTL) {
@@ -70,7 +70,7 @@ public class Reagent {
         }
     }
 
-    // Ensure valid input. Logic determines what stop to take next
+    // Ensure valid input. Logic determines what step to take next
     public static void runeCheck(String rune){
         String[] reagents = runeType(rune);
         if(reagents[0].equals("error")){

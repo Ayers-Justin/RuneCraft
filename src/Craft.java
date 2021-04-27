@@ -1,3 +1,6 @@
+import javax.swing.*;
+import java.awt.*;
+
 /** Justin Ayers. 4/16/2021. A personal note.
  * This is a project that I am creating for a mobile video game called Summoner's War.
  *  In this game, one of the many, many things you can do is collect crafting ingredients.
@@ -20,7 +23,28 @@
  *  Update 4/26/2021. I am done implementing the optimization logic. Now to clean up and organize code. */
 
 public class Craft {
+
     public static void main(String[] args){
+
+        JFrame frame = new JFrame("Summoners War Rune Craft");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(400, 400);
+
+        JPanel panel = new JPanel(); // the panel is not visible in output
+        JLabel label = new JLabel("Enter Text");
+        JTextField tf = new JTextField(15); // accepts upto 15 characters
+        JButton send = new JButton("Send");
+        panel.add(label); // Components Added using Flow Layout
+        panel.add(tf);
+        panel.add(send);
+
+        JTextArea ta = new JTextArea();
+
+        frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        frame.getContentPane().add(BorderLayout.CENTER, ta);
+        frame.setVisible(true);
+
+
         Intro.intro();
     }
 }
