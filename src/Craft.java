@@ -29,9 +29,11 @@ public class Craft {
 
         JPanel panel = new JPanel(); // the panel is not visible in output
         JLabel label = new JLabel("Enter Text");
-        JTextField tf = new JTextField(15); // accepts up to 15 characters
+        JTextField tf = new JTextField(15); // accepts upto 15 characters
+        JButton send = new JButton("Send");
         panel.add(label); // Components Added using Flow Layout
         panel.add(tf);
+        panel.add(send);
 
         JTextArea ta = new JTextArea();
 
