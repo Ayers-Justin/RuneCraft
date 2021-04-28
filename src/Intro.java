@@ -21,11 +21,11 @@ public class Intro {
         runeName = rune;
 
         if (rune.equals("quit")){
-            System.exit(0);
+        System.exit(0);
         }
         else
         {
-            Reagents.runeCheck(rune);
+        Reagent.runeCheck(rune);
         }
-    }
+}
 }

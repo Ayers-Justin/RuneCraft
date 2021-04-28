@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="SWRC:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/SWRC_jar</output-path>
-    <root id="archive" name="SWRC.jar">
-      <element id="module-output" name="SWRC" />
-    </root>
-  </artifact>
-</component>

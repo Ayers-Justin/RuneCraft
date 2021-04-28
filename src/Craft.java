@@ -1,6 +1,3 @@
-import javax.swing.*;
-import java.awt.*;
-
 /** Justin Ayers. 4/16/2021. A personal note.
  * This is a project that I am creating for a mobile video game called Summoner's War.
  *  In this game, one of the many, many things you can do is collect crafting ingredients.
@@ -23,8 +20,8 @@ import java.awt.*;
  *  Update 4/26/2021. I am done implementing the optimization logic. Now to clean up and organize code. */
 
 public class Craft {
-
     public static void main(String[] args){
+<<<<<<< HEAD
 
         JFrame frame = new JFrame("Summoners War Rune Craft");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -43,6 +40,8 @@ public class Craft {
         frame.setVisible(true);
 
 
+=======
+>>>>>>> parent of daf20c2 (Migrated files to new project. Reorganized naming structure. Resolved typos.)
         Intro.intro();
     }
 }
