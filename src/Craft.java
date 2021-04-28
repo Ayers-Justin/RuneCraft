@@ -21,29 +21,7 @@
 
 public class Craft {
     public static void main(String[] args){
-<<<<<<< HEAD
 
-        JFrame frame = new JFrame("Summoners War Rune Craft");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 400);
-
-        JPanel panel = new JPanel(); // the panel is not visible in output
-        JLabel label = new JLabel("Enter Text");
-        JTextField tf = new JTextField(15); // accepts upto 15 characters
-        JButton send = new JButton("Send");
-        panel.add(label); // Components Added using Flow Layout
-        panel.add(tf);
-        panel.add(send);
-
-        JTextArea ta = new JTextArea();
-
-        frame.getContentPane().add(BorderLayout.SOUTH, panel);
-        frame.getContentPane().add(BorderLayout.CENTER, ta);
-        frame.setVisible(true);
-
-
-=======
->>>>>>> parent of daf20c2 (Migrated files to new project. Reorganized naming structure. Resolved typos.)
         Intro.intro();
     }
 }
