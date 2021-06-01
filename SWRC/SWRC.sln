@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SWRC", "SWRC\SWRC.csproj", "{4A1F0CA3-61F9-4EAD-8C3E-7ACB6BA87562}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A1F0CA3-61F9-4EAD-8C3E-7ACB6BA87562}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A1F0CA3-61F9-4EAD-8C3E-7ACB6BA87562}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A1F0CA3-61F9-4EAD-8C3E-7ACB6BA87562}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A1F0CA3-61F9-4EAD-8C3E-7ACB6BA87562}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6B23C29-D1C8-40E0-A6F4-206436823AE9}
+	EndGlobalSection
+EndGlobal
