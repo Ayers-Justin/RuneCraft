@@ -11,3 +11,5 @@ C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.csproj.
 C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.dll
 C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.pdb
 C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.genruntimeconfig.cache
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.Form1.resources
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Debug\netcoreapp3.1\SWRC.csproj.GenerateResource.cache
