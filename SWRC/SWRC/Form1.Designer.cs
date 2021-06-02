@@ -34,12 +34,10 @@ namespace SWRC
             this.btn_CalcBalance = new System.Windows.Forms.Button();
             this.txt_UserIn = new System.Windows.Forms.TextBox();
             this.grp_Supplies = new System.Windows.Forms.GroupBox();
-            this.txt_Supply5 = new System.Windows.Forms.TextBox();
             this.txt_Supply4 = new System.Windows.Forms.TextBox();
+            this.txt_Supply1 = new System.Windows.Forms.TextBox();
             this.txt_Supply3 = new System.Windows.Forms.TextBox();
             this.txt_Supply2 = new System.Windows.Forms.TextBox();
-            this.txt_Supply1 = new System.Windows.Forms.TextBox();
-            this.lbl_Supply5 = new System.Windows.Forms.Label();
             this.lbl_Supply4 = new System.Windows.Forms.Label();
             this.lbl_Supply3 = new System.Windows.Forms.Label();
             this.lbl_Supply2 = new System.Windows.Forms.Label();
@@ -94,7 +92,7 @@ namespace SWRC
             // 
             this.txt_UserIn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txt_UserIn.Location = new System.Drawing.Point(12, 395);
+            this.txt_UserIn.Location = new System.Drawing.Point(12, 351);
             this.txt_UserIn.Name = "txt_UserIn";
             this.txt_UserIn.Size = new System.Drawing.Size(328, 23);
             this.txt_UserIn.TabIndex = 4;
@@ -102,46 +100,44 @@ namespace SWRC
             // grp_Supplies
             // 
             this.grp_Supplies.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.grp_Supplies.Controls.Add(this.txt_Supply5);
             this.grp_Supplies.Controls.Add(this.txt_Supply4);
+            this.grp_Supplies.Controls.Add(this.txt_Supply1);
             this.grp_Supplies.Controls.Add(this.txt_Supply3);
             this.grp_Supplies.Controls.Add(this.txt_Supply2);
-            this.grp_Supplies.Controls.Add(this.txt_Supply1);
-            this.grp_Supplies.Controls.Add(this.lbl_Supply5);
             this.grp_Supplies.Controls.Add(this.lbl_Supply4);
             this.grp_Supplies.Controls.Add(this.lbl_Supply3);
             this.grp_Supplies.Controls.Add(this.lbl_Supply2);
             this.grp_Supplies.Controls.Add(this.lbl_Supply1);
             this.grp_Supplies.Location = new System.Drawing.Point(200, 47);
             this.grp_Supplies.Name = "grp_Supplies";
-            this.grp_Supplies.Size = new System.Drawing.Size(140, 189);
+            this.grp_Supplies.Size = new System.Drawing.Size(140, 147);
             this.grp_Supplies.TabIndex = 5;
             this.grp_Supplies.TabStop = false;
             this.grp_Supplies.Text = "Supplies";
             this.grp_Supplies.Visible = false;
             // 
-            // txt_Supply5
-            // 
-            this.txt_Supply5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_Supply5.Location = new System.Drawing.Point(66, 144);
-            this.txt_Supply5.Name = "txt_Supply5";
-            this.txt_Supply5.Size = new System.Drawing.Size(68, 23);
-            this.txt_Supply5.TabIndex = 9;
-            this.txt_Supply5.Visible = false;
-            // 
             // txt_Supply4
             // 
             this.txt_Supply4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_Supply4.Location = new System.Drawing.Point(66, 114);
+            this.txt_Supply4.Location = new System.Drawing.Point(66, 109);
             this.txt_Supply4.Name = "txt_Supply4";
             this.txt_Supply4.Size = new System.Drawing.Size(68, 23);
             this.txt_Supply4.TabIndex = 8;
             this.txt_Supply4.Visible = false;
             // 
+            // txt_Supply1
+            // 
+            this.txt_Supply1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_Supply1.Location = new System.Drawing.Point(66, 22);
+            this.txt_Supply1.Name = "txt_Supply1";
+            this.txt_Supply1.Size = new System.Drawing.Size(68, 23);
+            this.txt_Supply1.TabIndex = 5;
+            this.txt_Supply1.Visible = false;
+            // 
             // txt_Supply3
             // 
             this.txt_Supply3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_Supply3.Location = new System.Drawing.Point(66, 84);
+            this.txt_Supply3.Location = new System.Drawing.Point(66, 80);
             this.txt_Supply3.Name = "txt_Supply3";
             this.txt_Supply3.Size = new System.Drawing.Size(68, 23);
             this.txt_Supply3.TabIndex = 7;
@@ -150,37 +146,17 @@ namespace SWRC
             // txt_Supply2
             // 
             this.txt_Supply2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_Supply2.Location = new System.Drawing.Point(66, 54);
+            this.txt_Supply2.Location = new System.Drawing.Point(66, 51);
             this.txt_Supply2.Name = "txt_Supply2";
             this.txt_Supply2.Size = new System.Drawing.Size(68, 23);
             this.txt_Supply2.TabIndex = 6;
             this.txt_Supply2.Visible = false;
             // 
-            // txt_Supply1
-            // 
-            this.txt_Supply1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.txt_Supply1.Location = new System.Drawing.Point(66, 24);
-            this.txt_Supply1.Name = "txt_Supply1";
-            this.txt_Supply1.Size = new System.Drawing.Size(68, 23);
-            this.txt_Supply1.TabIndex = 5;
-            this.txt_Supply1.Visible = false;
-            // 
-            // lbl_Supply5
-            // 
-            this.lbl_Supply5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.lbl_Supply5.AutoSize = true;
-            this.lbl_Supply5.Location = new System.Drawing.Point(6, 152);
-            this.lbl_Supply5.Name = "lbl_Supply5";
-            this.lbl_Supply5.Size = new System.Drawing.Size(52, 15);
-            this.lbl_Supply5.TabIndex = 4;
-            this.lbl_Supply5.Text = "Supply 5";
-            this.lbl_Supply5.Visible = false;
-            // 
             // lbl_Supply4
             // 
             this.lbl_Supply4.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_Supply4.AutoSize = true;
-            this.lbl_Supply4.Location = new System.Drawing.Point(6, 122);
+            this.lbl_Supply4.Location = new System.Drawing.Point(6, 117);
             this.lbl_Supply4.Name = "lbl_Supply4";
             this.lbl_Supply4.Size = new System.Drawing.Size(52, 15);
             this.lbl_Supply4.TabIndex = 3;
@@ -191,7 +167,7 @@ namespace SWRC
             // 
             this.lbl_Supply3.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_Supply3.AutoSize = true;
-            this.lbl_Supply3.Location = new System.Drawing.Point(6, 92);
+            this.lbl_Supply3.Location = new System.Drawing.Point(6, 88);
             this.lbl_Supply3.Name = "lbl_Supply3";
             this.lbl_Supply3.Size = new System.Drawing.Size(52, 15);
             this.lbl_Supply3.TabIndex = 2;
@@ -202,7 +178,7 @@ namespace SWRC
             // 
             this.lbl_Supply2.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_Supply2.AutoSize = true;
-            this.lbl_Supply2.Location = new System.Drawing.Point(6, 62);
+            this.lbl_Supply2.Location = new System.Drawing.Point(6, 59);
             this.lbl_Supply2.Name = "lbl_Supply2";
             this.lbl_Supply2.Size = new System.Drawing.Size(52, 15);
             this.lbl_Supply2.TabIndex = 1;
@@ -213,7 +189,7 @@ namespace SWRC
             // 
             this.lbl_Supply1.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.lbl_Supply1.AutoSize = true;
-            this.lbl_Supply1.Location = new System.Drawing.Point(6, 32);
+            this.lbl_Supply1.Location = new System.Drawing.Point(6, 30);
             this.lbl_Supply1.Name = "lbl_Supply1";
             this.lbl_Supply1.Size = new System.Drawing.Size(52, 15);
             this.lbl_Supply1.TabIndex = 0;
@@ -228,7 +204,7 @@ namespace SWRC
             this.lbl_TextToUser.Name = "lbl_TextToUser";
             this.lbl_TextToUser.Size = new System.Drawing.Size(181, 77);
             this.lbl_TextToUser.TabIndex = 6;
-            this.lbl_TextToUser.Text = "Text";
+            this.lbl_TextToUser.Text = "Choose an option above!";
             // 
             // grp_Runes
             // 
@@ -239,7 +215,7 @@ namespace SWRC
             this.grp_Runes.Controls.Add(this.txt_Rune1);
             this.grp_Runes.Controls.Add(this.lbl_Rune2);
             this.grp_Runes.Controls.Add(this.lbl_Rune1);
-            this.grp_Runes.Location = new System.Drawing.Point(200, 251);
+            this.grp_Runes.Location = new System.Drawing.Point(200, 209);
             this.grp_Runes.Name = "grp_Runes";
             this.grp_Runes.Size = new System.Drawing.Size(140, 125);
             this.grp_Runes.TabIndex = 7;
@@ -284,6 +260,7 @@ namespace SWRC
             this.txt_Rune1.Size = new System.Drawing.Size(74, 23);
             this.txt_Rune1.TabIndex = 2;
             this.txt_Rune1.Visible = false;
+            this.txt_Rune1.TextChanged += new System.EventHandler(this.txt_Rune1_TextChanged);
             // 
             // lbl_Rune2
             // 
@@ -335,7 +312,7 @@ namespace SWRC
             // 
             this.grp_BalanceOption.Controls.Add(this.rad_Option1);
             this.grp_BalanceOption.Controls.Add(this.rad_Option2);
-            this.grp_BalanceOption.Location = new System.Drawing.Point(13, 251);
+            this.grp_BalanceOption.Location = new System.Drawing.Point(13, 209);
             this.grp_BalanceOption.Name = "grp_BalanceOption";
             this.grp_BalanceOption.Size = new System.Drawing.Size(181, 46);
             this.grp_BalanceOption.TabIndex = 10;
@@ -347,7 +324,7 @@ namespace SWRC
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(352, 430);
+            this.ClientSize = new System.Drawing.Size(352, 386);
             this.Controls.Add(this.grp_BalanceOption);
             this.Controls.Add(this.grp_Runes);
             this.Controls.Add(this.lbl_TextToUser);
@@ -356,9 +333,9 @@ namespace SWRC
             this.Controls.Add(this.btn_CalcBalance);
             this.Controls.Add(this.btn_CalcSup);
             this.Controls.Add(this.btn_CalcRune);
-            this.MinimumSize = new System.Drawing.Size(368, 469);
+            this.MinimumSize = new System.Drawing.Size(368, 425);
             this.Name = "Form1";
-            this.Text = "Summoners War Rune Calculator";
+            this.Text = "Summoners War Rune Crafting";
             this.grp_Supplies.ResumeLayout(false);
             this.grp_Supplies.PerformLayout();
             this.grp_Runes.ResumeLayout(false);
@@ -376,12 +353,10 @@ namespace SWRC
         private System.Windows.Forms.Button btn_CalcBalance;
         private System.Windows.Forms.TextBox txt_UserIn;
         private System.Windows.Forms.GroupBox grp_Supplies;
-        private System.Windows.Forms.TextBox txt_Supply5;
         private System.Windows.Forms.TextBox txt_Supply4;
         private System.Windows.Forms.TextBox txt_Supply3;
         private System.Windows.Forms.TextBox txt_Supply2;
         private System.Windows.Forms.TextBox txt_Supply1;
-        private System.Windows.Forms.Label lbl_Supply5;
         private System.Windows.Forms.Label lbl_Supply4;
         private System.Windows.Forms.Label lbl_Supply3;
         private System.Windows.Forms.Label lbl_Supply2;

@@ -12,6 +12,10 @@ namespace SWRC
 {
     public partial class Form1 : Form
     {
+        private string rune1 = "";
+
+
+
         public Form1()
         {
             InitializeComponent();
@@ -25,7 +29,10 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                
+                lbl_TextToUser.Text = "Choose an option above!";
+                grp_Runes.Visible = false;
+                grp_BalanceOption.Visible = false;
+                grp_Supplies.Visible = false;
             }
             else
             {
@@ -49,7 +56,10 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                
+                lbl_TextToUser.Text = "Choose an option above!";
+                grp_Runes.Visible = false;
+                grp_BalanceOption.Visible = false;
+                grp_Supplies.Visible = false;
             }
             else
             {
@@ -73,7 +83,10 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                
+                lbl_TextToUser.Text = "Choose an option above!";
+                grp_Runes.Visible = false;
+                grp_BalanceOption.Visible = false;
+                grp_Supplies.Visible = false;
             }
             else
             {
@@ -104,6 +117,11 @@ namespace SWRC
             txt_Rune1.Visible = true;
             txt_Rune2.Visible = true;
             txt_Rune3.Visible = true;
+        }
+
+        private void txt_Rune1_TextChanged(object sender, EventArgs e)
+        {
+            rune1 = sender;
         }
     }
 }
