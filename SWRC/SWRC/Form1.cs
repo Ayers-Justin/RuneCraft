@@ -20,6 +20,10 @@ namespace SWRC
         private string supply2 = "";
         private string supply3 = "";
         private string supply4 = "";
+        private int numEnters = 0;
+        private Boolean runes = false;
+        private Boolean supplies = false;
+        private Boolean balance = false;
 
         #endregion
 
@@ -54,6 +58,8 @@ namespace SWRC
                 txt_Rune1.Visible = true;
                 txt_Rune2.Visible = false;
                 txt_Rune3.Visible = false;
+                numEnters = 0;
+                runes = true;
             }
         }
 
@@ -81,6 +87,8 @@ namespace SWRC
                 txt_Rune1.Visible = true;
                 txt_Rune2.Visible = false;
                 txt_Rune3.Visible = false;
+                numEnters = 0;
+                supplies = true;
             }
         }
 
@@ -104,7 +112,8 @@ namespace SWRC
                 grp_BalanceOption.Visible = true;
                 lbl_Rune1.Visible = false;
                 txt_Rune1.Visible = false;
-
+                numEnters = 0;
+                balance = true;
             }
         }
 
@@ -142,9 +151,9 @@ namespace SWRC
             box.Text = string.Empty;
         }
 
-        private Boolean ToggleVisible(Boolean state)
+        private void CheckRunes()
         {
-            return (state ? !state : state) ;
+
         }
 
         #endregion
@@ -158,8 +167,44 @@ namespace SWRC
             supply2 = txt_Supply2.Text;
             supply3 = txt_Supply3.Text;
             supply4 = txt_Supply4.Text;
+            numEnters++;
 
-            
+            NextStep();
         }
+
+        private void NextStep()
+        {
+            if ((numEnters == 1)&& runes)
+            {
+                
+            }
+
+            if((numEnters == 1)&& supplies)
+            {
+
+            }
+
+            if((numEnters == 1)&& balance)
+            {
+
+            }
+
+            if ((numEnters == 2) && runes)
+            {
+
+            }
+
+            if ((numEnters == 2) && supplies)
+            {
+
+            }
+
+            if ((numEnters == 2) && balance)
+            {
+
+            }
+        }
+
+
     }
 }
