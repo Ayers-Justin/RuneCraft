@@ -98,6 +98,7 @@ namespace SWRC
             this.txt_UserIn.Size = new System.Drawing.Size(246, 23);
             this.txt_UserIn.TabIndex = 4;
             this.txt_UserIn.Text = "0";
+            this.txt_UserIn.Visible = false;
             // 
             // grp_Supplies
             // 
@@ -351,6 +352,9 @@ namespace SWRC
             this.Controls.Add(this.btn_CalcBalance);
             this.Controls.Add(this.btn_CalcSup);
             this.Controls.Add(this.btn_CalcRune);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(368, 425);
             this.MinimumSize = new System.Drawing.Size(368, 425);
             this.Name = "Form1";
             this.Text = "Summoners War Rune Crafting";

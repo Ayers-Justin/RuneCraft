@@ -28,9 +28,9 @@ namespace SWRC
         private int supply3 = 0;
         private int supply4 = 0;
         private int numEnters = 0;
-        private Boolean runes = false;
-        private Boolean supplies = false;
-        private Boolean isBalance = false;
+        private bool runes = false;
+        private bool supplies = false;
+        private bool isBalance = false;
         private int numReagents = 0;
         private string[] listRunesBalance = { "", "", "" };
         private string[] ingredients = { "", "", "", "" };
@@ -40,9 +40,9 @@ namespace SWRC
         private int numRunes = 0;
         private int totalCost = 0;
         private int numLegend = 0;
-        private Boolean isGiants = false;
-        private Boolean isDragons = false;
-        private Boolean isNecro = false;
+        private bool isGiants = false;
+        private bool isDragons = false;
+        private bool isNecro = false;
         private static int main_cost = 18;
         private static int alt_cost = 6;
         private static int piece_cost = 12;
@@ -87,14 +87,8 @@ namespace SWRC
             else
             {
                 lbl_TextToUser.Text = "Enter your rune type in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
-                grp_BalanceOption.Visible = false; ;
-                grp_Runes.Visible = true;
-                lbl_Rune1.Visible = true;
-                lbl_Rune2.Visible = false;
-                lbl_Rune3.Visible = false;
-                txt_Rune1.Visible = true;
-                txt_Rune2.Visible = false;
-                txt_Rune3.Visible = false;
+                grp_BalanceOption.Visible = false;
+                SetRunes(1);
                 numEnters = 0;
                 runes = true;
                 RemoveSupplies();
@@ -121,14 +115,8 @@ namespace SWRC
             {
                 lbl_TextToUser.Text = "Enter the rune you want to craft in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
                 grp_BalanceOption.Visible = false;
-                grp_Runes.Visible = true;
-                lbl_Rune1.Visible = true;
-                lbl_Rune2.Visible = false;
-                lbl_Rune3.Visible = false;
-                txt_Rune1.Visible = true;
-                txt_Rune2.Visible = false;
-                txt_Rune3.Visible = false;
                 numEnters = 0;
+                SetRunes(1);
                 supplies = true;
                 RemoveSupplies();
             }
@@ -152,14 +140,13 @@ namespace SWRC
             }
             else
             {
-                lbl_TextToUser.Text = "Enter the runes in the Rune Choice box, then hit enter.";
-                grp_Runes.Visible = true;
+                lbl_TextToUser.Text = "Choose the number of runes to balance below!";
                 grp_BalanceOption.Visible = true;
-                lbl_Rune1.Visible = false;
-                txt_Rune1.Visible = false;
+                grp_Runes.Visible = false;
                 numEnters = 0;
                 isBalance = true;
                 RemoveSupplies();
+
             }
         }
 
@@ -175,12 +162,8 @@ namespace SWRC
         /// </summary>
         private void rad_Option1_CheckedChanged(object sender, EventArgs e)
         {
-            lbl_Rune1.Visible = true;
-            lbl_Rune2.Visible = true;
-            lbl_Rune3.Visible = false;
-            txt_Rune1.Visible = true;
-            txt_Rune2.Visible = true;
-            txt_Rune3.Visible = false;
+            SetRunes(2);
+            lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
         }
 
         /// <summary>
@@ -188,12 +171,8 @@ namespace SWRC
         /// </summary>
         private void rad_Option2_CheckedChanged(object sender, EventArgs e)
         {
-            lbl_Rune1.Visible = true;
-            lbl_Rune2.Visible = true;
-            lbl_Rune3.Visible = true;
-            txt_Rune1.Visible = true;
-            txt_Rune2.Visible = true;
-            txt_Rune3.Visible = true;
+            SetRunes(3);
+            lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
         }
 
         #endregion
@@ -202,6 +181,114 @@ namespace SWRC
         /// Methods of code that get used during multiple stages.
         /// </summary>
         #region Helper Methods
+
+        /// <summary>
+        /// Sets the number of runes visible based on the chosen option.
+        /// </summary>
+        private void SetRunes(int num)
+        {
+            if(num == 1)
+            {
+                grp_Runes.Visible = true;
+                lbl_Rune1.Visible = true;
+                lbl_Rune2.Visible = false;
+                lbl_Rune3.Visible = false;
+                txt_Rune1.Visible = true;
+                txt_Rune2.Visible = false;
+                txt_Rune3.Visible = false;
+            }
+
+            else if(num == 2)
+            {
+                grp_Runes.Visible = true;
+                lbl_Rune1.Visible = true;
+                lbl_Rune2.Visible = true;
+                lbl_Rune3.Visible = false;
+                txt_Rune1.Visible = true;
+                txt_Rune2.Visible = true;
+                txt_Rune3.Visible = false;
+            }
+
+            else
+            {
+                grp_Runes.Visible = true;
+                lbl_Rune1.Visible = true;
+                lbl_Rune2.Visible = true;
+                lbl_Rune3.Visible = true;
+                txt_Rune1.Visible = true;
+                txt_Rune2.Visible = true;
+                txt_Rune3.Visible = true;
+            }
+        }
+
+        /// <summary>
+        /// Method to convert the first letter to a capitalized
+        /// </summary>
+        public string FirstLetterToUpper(string str)
+        {
+            if (str == null)
+            {
+                return null;
+            }
+
+            if (str.Length > 1)
+            {
+                str = str.ToLower();
+                return char.ToUpper(str[0]) + str.Substring(1);
+            }
+
+            return str.ToUpper();
+        }
+
+        ///<summary>
+        /// Method to send the final information to the user.
+        /// </summary>
+        private void MessageOut(string messageType)
+        {
+            string toFormat = totalCost.ToString("#,##0");
+            if (messageType.Equals("runes"))
+            {
+                rune1 = FirstLetterToUpper(rune1);
+                lbl_TextToUser.Text = "You can craft " + numRunes + " " + rune1 + " runes!" + '\n'
+                    + "It will cost " + toFormat + " mana stones! Be sure to save up!" + '\n' +
+                    "You should get approximately " + numLegend + " legendary 6* runes!";
+            }
+
+            else if (messageType.Equals("supplies"))
+            {
+                rune1 = FirstLetterToUpper(rune1);
+                lbl_TextToUser.Text = "It will cost " + toFormat + " mana stones! Be sure to save up!"
+                + '\n' + "You should get approximately " + numLegend + " legendary 6* runes!";
+                txt_Supply1.Text = reagentTotals[0].ToString();
+                txt_Supply2.Text = reagentTotals[1].ToString();
+                txt_Supply3.Text = reagentTotals[2].ToString();
+                txt_Supply4.Text = reagentTotals[3].ToString();
+            }
+            else
+            {
+                if (rad_Option1.Checked)
+                {
+                    rune1 = FirstLetterToUpper(rune1);
+                    rune2 = FirstLetterToUpper(rune2);
+                    lbl_TextToUser.Text = "You can craft a total of " + numRunes + " runes!" + '\n'
+                        + numRune1 + " " + rune1 + '\n' + numRune2 + " " + rune2 + '\n'
+                        + "It will cost " + toFormat + " mana stones! Be sure to save up!" + '\n' +
+                        "You should get approximately " + numLegend + " legendary 6* runes!";
+                }
+
+                else
+                {
+                    rune1 = FirstLetterToUpper(rune1);
+                    rune2 = FirstLetterToUpper(rune2);
+                    rune3 = FirstLetterToUpper(rune3);
+                    lbl_TextToUser.Text = "You can craft a total of " + numRunes + " runes!" + '\n'
+                        + numRune1 + " " + rune1 + '\n' + numRune2 + " " + rune2 + '\n'
+                        + numRune3 + " " + rune3 + '\n'
+                        + "It will cost " + toFormat + " mana stones! Be sure to save up!" + '\n' +
+                        "You should get approximately " + numLegend + " legendary 6* runes!";
+                }
+            }
+        }
 
         ///<summary>
         /// Empties the specified text box
@@ -214,9 +301,9 @@ namespace SWRC
         /// <summary>
         /// Verify user input runes are valid
         /// </summary>
-        private Boolean CheckRunes(string name)
+        private bool CheckRunes(string name)
         {
-            Boolean isValid = false;
+            bool isValid = false;
             isValid = RuneValid(name);
             return isValid;
         }
@@ -314,23 +401,23 @@ namespace SWRC
         }
 
         /// <summary>
-        /// Works with IsInt to convert the string on the text boxes to integers
+        /// Convert the string on the text boxes to integers if possible. Message box error if not.
         /// </summary>
         private int GetInput(string input, TextBox box)
         {
-            int numCheck = 0;
-            numCheck = IsInt(input);
-            return numCheck;
-        }
-
-        /// <summary>
-        /// Works with GetInput to conver the string on the text boxes to integers
-        /// </summary>
-        private int IsInt(String input)
-        {
-            int i = -1; 
-            i = Int32.Parse(input);
-            return i;
+            int numCheck = -1;
+            if (int.TryParse(input, out numCheck))
+            {
+                return numCheck;
+            }
+            else
+            {
+                TextClear(box);
+                string title = "Error";
+                string message = "Please enter a number between 0 and 99999";
+                MessageBox.Show(message, title);
+                return -1; // or error int
+            }
         }
 
         #endregion
@@ -387,6 +474,7 @@ namespace SWRC
                     GetRuneInfo(rune1);
                     SetSupplies();
                     SetIngredients();
+                    txt_UserIn.Visible = true;
                     lbl_TextToUser.Text = "Enter the desired number of runes below, then hit enter!";
                 }
                 else
@@ -444,44 +532,20 @@ namespace SWRC
             if ((numEnters >= 2) && runes)
             {
                 CalculateRunes();
-                lbl_TextToUser.Text = "You can craft " + numRunes + " " + rune1 + " runes!" + '\n'
-                    + "It will cost " + totalCost + " mana stones! Be sure to save up!" + '\n' +
-                    "You should get approximately " + numLegend + " legendary 6* runes!";
+                MessageOut("runes");
 
             }
 
             if ((numEnters >= 2) && supplies)
             {
                 CalculateSupplies();
-                lbl_TextToUser.Text = "It will cost " + totalCost + " mana stones! Be sure to save up!" 
-                    + '\n' + "You should get approximately " + numLegend + " legendary 6* runes!";
-                txt_Supply1.Text = reagentTotals[0].ToString();
-                txt_Supply2.Text = reagentTotals[1].ToString();
-                txt_Supply3.Text = reagentTotals[2].ToString();
-                txt_Supply4.Text = reagentTotals[3].ToString();
-
+                MessageOut("supplies");
             }
 
             if ((numEnters == 2) && isBalance)
             {
-                if (rad_Option1.Checked)
-                {
-                    CalculateBalance(new Boolean[] { isGiants, isDragons, isNecro });
-                    lbl_TextToUser.Text = "You can craft a total of " + numRunes + " runes!" + '\n'
-                        + numRune1 + " " + rune1 + '\n' + numRune2 + " " + rune2 + '\n'
-                        + "It will cost " + totalCost + " mana stones! Be sure to save up!" + '\n' +
-                        "You should get approximately " + numLegend + " legendary 6* runes!";
-                }
-
-                else
-                {
-                    CalculateBalance(new Boolean[] { isGiants, isDragons, isNecro });
-                    lbl_TextToUser.Text = "You can craft a total of " + numRunes + " runes!" + '\n'
-                        + numRune1 + " " + rune1 + '\n' + numRune2 + " " + rune2 + '\n'
-                        + numRune3 + " " + rune3 + '\n'
-                        + "It will cost " + totalCost + " mana stones! Be sure to save up!" + '\n' +
-                        "You should get approximately " + numLegend + " legendary 6* runes!";
-                }
+                CalculateBalance(new bool[] { isGiants, isDragons, isNecro });
+                MessageOut("balance");
             }
         }
 
@@ -495,36 +559,13 @@ namespace SWRC
         /// <summary>
         /// Method to ensure user inputs a valid rune name.
         /// </summary>
-        private Boolean RuneValid(string name)
+        static bool RuneValid(string name)
         {
             string runeTL = name.ToLower();
-            switch (runeTL)
-            {
-                case "energy":
-                case "swift":
-                case "blade":
-                case "fatal":
-                case "despair":
-                case "guard":
-                case "focus":
-                case "endure":
-                case "violent":
-                case "shield":
-                case "revenge":
-                case "rage":
-                case "vampire":
-                case "nemesis":
-                case "will":
-                case "destroy":
-                case "fight":
-                case "determination":
-                case "enhance":
-                case "accuracy":
-                case "ancient":
-                    return true;
-                default:
-                    return false;
-            }
+            string[] possibleRunes = { "energy", "swift", "blade", "fatal", "despair", "guard", "focus", 
+                "endure", "violent", "shield", "revenge", "rage", "vampire", "nemesis", "will", "destroy",
+                "fight", "determination", "enhance", "accuracy", "tolerance", "ancient"};
+            return Array.Exists<string>(possibleRunes, element => element == runeTL);
         }
 
         /// <summary>
@@ -684,17 +725,17 @@ namespace SWRC
         /// Archtypes are defined by their primary crafting ingredient, which is the dominant
         /// drop of the associated dungeon. Green = Giants, Red = Dragons, Purple = Necro.
         /// </summary>
-        private void CalculateBalance(Boolean[] balanceTypes)
+        private void CalculateBalance(bool[] balanceTypes)
         {
-            if (Array.Equals(balanceTypes, new Boolean[] { false, true, true }))
+            if (Array.Equals(balanceTypes, new bool[] { false, true, true }))
             {
                 exclusion = 0;
             }
-            else if (Array.Equals(balanceTypes, new Boolean[] { true, false, true }))
+            else if (Array.Equals(balanceTypes, new bool[] { true, false, true }))
             {
                 exclusion = 1;
             }
-            else if (Array.Equals(balanceTypes, new Boolean[] { true, true, false }))
+            else if (Array.Equals(balanceTypes, new bool[] { true, true, false }))
             {
                 exclusion = 2;
             }
@@ -802,7 +843,7 @@ namespace SWRC
         /// Used to find the greatest value on the list, to use that as the primary crafting
         /// ingredient of the next iteration.
         /// </summary>
-        private Boolean GreaterThan(int limit, int[] data)
+        private bool GreaterThan(int limit, int[] data)
         {
             /*
             determines if all of vector data is greater than some limit
@@ -916,5 +957,19 @@ namespace SWRC
             return (Math.Min(min, min2));
         }
         #endregion
+
+
+        /// <summary>
+        /// TODO LIST
+        /// </summary>
+        /* Catch improper integer inputs in supply boxes, move back to re-inputing the supplies.
+         * Focus the selection to select the number in the box when the user clicks on the box.
+         * Clear the text boxes as the user moves from one menu option to the next.
+         * Display message box when invalid rune name is chosen.
+         * Add a check to ensure that the integer inputs in supplies are between 0 and 9999.
+         * Add a way to sort the runes entered in rune choices for balance to  Giants > Dragons > Necro.
+         * Add a check to ensure that the integer inputs in txt_UserIn are between 0 and 555.
+         * Make the program an executable.
+         */
     }
 }
