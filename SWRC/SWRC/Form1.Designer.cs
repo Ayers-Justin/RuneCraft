@@ -29,6 +29,7 @@ namespace SWRC
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btn_CalcRune = new System.Windows.Forms.Button();
             this.btn_CalcSup = new System.Windows.Forms.Button();
             this.btn_CalcBalance = new System.Windows.Forms.Button();
@@ -353,11 +354,12 @@ namespace SWRC
             this.Controls.Add(this.btn_CalcSup);
             this.Controls.Add(this.btn_CalcRune);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(368, 425);
             this.MinimumSize = new System.Drawing.Size(368, 425);
             this.Name = "Form1";
-            this.Text = "Summoners War Rune Crafting";
+            this.Text = "Summoner\'s War Rune Crafting";
             this.grp_Supplies.ResumeLayout(false);
             this.grp_Supplies.PerformLayout();
             this.grp_Runes.ResumeLayout(false);

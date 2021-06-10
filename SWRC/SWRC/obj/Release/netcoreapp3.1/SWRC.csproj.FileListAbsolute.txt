@@ -1,0 +1,15 @@
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.exe
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.deps.json
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.runtimeconfig.json
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.runtimeconfig.dev.json
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.dll
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\bin\Release\netcoreapp3.1\SWRC.pdb
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.csprojAssemblyReference.cache
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.Form1.resources
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.csproj.GenerateResource.cache
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.AssemblyInfoInputs.cache
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.AssemblyInfo.cs
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.csproj.CoreCompileInputs.cache
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.dll
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.pdb
+C:\Users\Justin\IdeaProjects\SWRC\SWRC\SWRC\obj\Release\netcoreapp3.1\SWRC.genruntimeconfig.cache

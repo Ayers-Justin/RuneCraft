@@ -28,8 +28,8 @@ namespace SWRC
         private int supply3 = 0;
         private int supply4 = 0;
         private int numEnters = 0;
-        private bool runes = false;
-        private bool supplies = false;
+        private bool isRunes = false;
+        private bool isSupplies = false;
         private bool isBalance = false;
         private int numReagents = 0;
         private string[] listRunesBalance = { "", "", "" };
@@ -79,19 +79,18 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                lbl_TextToUser.Text = "Choose an option above!";
-                grp_Runes.Visible = false;
-                grp_BalanceOption.Visible = false;
-                RemoveSupplies();
+                SetDefaults();
+                SetState(0);
+            }
+            else if (result == DialogResult.OK)
+            {
+                SetDefaults();
+                isRunes = true;
+                SetState(1);
             }
             else
             {
-                lbl_TextToUser.Text = "Enter your rune type in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
-                grp_BalanceOption.Visible = false;
-                SetRunes(1);
-                numEnters = 0;
-                runes = true;
-                RemoveSupplies();
+                WarnUser("unspecified");
             }
         }
 
@@ -106,19 +105,18 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                lbl_TextToUser.Text = "Choose an option above!";
-                grp_Runes.Visible = false;
-                grp_BalanceOption.Visible = false;
-                RemoveSupplies();
+                SetDefaults();
+                SetState(0);
+            }
+            else if (result == DialogResult.OK)
+            {
+                SetDefaults();
+                isSupplies = true;
+                SetState(1);
             }
             else
             {
-                lbl_TextToUser.Text = "Enter the rune you want to craft in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
-                grp_BalanceOption.Visible = false;
-                numEnters = 0;
-                SetRunes(1);
-                supplies = true;
-                RemoveSupplies();
+                WarnUser("unspecified");
             }
         }
 
@@ -133,20 +131,18 @@ namespace SWRC
             DialogResult result = MessageBox.Show(message, title, buttons);
             if (result == DialogResult.Cancel)
             {
-                lbl_TextToUser.Text = "Choose an option above!";
-                grp_Runes.Visible = false;
-                grp_BalanceOption.Visible = false;
-                RemoveSupplies();
+                SetDefaults();
+                SetState(0);
+            }
+            else if(result == DialogResult.OK)
+            {
+                SetDefaults();
+                isBalance = true;
+                SetState(1);
             }
             else
             {
-                lbl_TextToUser.Text = "Choose the number of runes to balance below!";
-                grp_BalanceOption.Visible = true;
-                grp_Runes.Visible = false;
-                numEnters = 0;
-                isBalance = true;
-                RemoveSupplies();
-
+                WarnUser("unspecified");
             }
         }
 
@@ -162,8 +158,10 @@ namespace SWRC
         /// </summary>
         private void rad_Option1_CheckedChanged(object sender, EventArgs e)
         {
+            ClearRunes();
             SetRunes(2);
             lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
+            BalanceInfo();
         }
 
         /// <summary>
@@ -171,8 +169,10 @@ namespace SWRC
         /// </summary>
         private void rad_Option2_CheckedChanged(object sender, EventArgs e)
         {
+            ClearRunes();
             SetRunes(3);
             lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
+            BalanceInfo();
         }
 
         #endregion
@@ -181,6 +181,520 @@ namespace SWRC
         /// Methods of code that get used during multiple stages.
         /// </summary>
         #region Helper Methods
+
+        /// <summary>
+        /// Inform the user the restrictions for using Balance.
+        /// </summary>
+        private void BalanceInfo()
+        {
+            string title = "Information";
+            string message = "The balance feature requires you to choose runes of different types, determined by their drop location. To use this feature, " +
+                "please ensure that you are choosing runes that drop from different dungeons. Remember, this is Cairos only, so you may only choose from" +
+                " Giants, Dragons, or Necropolis. Thank you!";
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Method to identify where an issue has occured, and how the user might fix it.
+        /// </summary>
+        private void WarnUser(string error)
+        {
+            string message = "";
+            string title = "";
+            if (error.Equals("rune"))
+            {
+                message = "Please enter a valid rune type!";
+                title = "Rune Type Error";
+            }
+            else if (error.Equals("number"))
+            {
+                supply1 = 0;
+                message = "Please enter a number between 0 and 9999";
+                title = "Number Error";
+            }
+            else if (error.Equals("numberSupplies"))
+            {
+                supply1 = 0;
+                message = "Please enter a number between 0 and 555.";
+                title = "Exceed Supplies Error";
+            }
+            else if (error.Equals("typeConflict"))
+            {
+                supply1 = 0;
+                message = "Runes must be dropped from different dungeons to be balanced!";
+                title = "Invalid Rune Types";
+            }
+            else if (error.Equals("unspecified"))
+            {
+                message = "An unknown error has occured.";
+                title = "Unknown Error";
+            }
+            else
+            {
+                WarnUser("unspecified");
+            }
+            MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// Method to clear radio button selections
+        /// </summary>
+        private void ClearRadio()
+        {
+            rad_Option1.Checked = false;
+            rad_Option2.Checked = false;
+        }
+
+        /// <summary>
+        /// Method to "factory reset" the settings... to be used when shifting from one function of the calculator to another
+        /// </summary>
+        private void SetDefaults()
+        {
+            rune1 = "";
+            rune2 = "";
+            rune3 = "";
+            supply1 = 0;
+            supply2 = 0;
+            supply3 = 0;
+            supply4 = 0;
+            numEnters = 0;
+            isRunes = false;
+            isSupplies = false;
+            isBalance = false;
+            numReagents = 0;
+            listRunesBalance = new string[] { "", "", "" };
+            ingredients = new string[] { "", "", "", "" };
+            reagentTotals = new int[] { 0, 0, 0, 0 };
+            exclusion = 0;
+            cost = 0;
+            numRunes = 0;
+            totalCost = 0;
+            numLegend = 0;
+            isGiants = false;
+            isDragons = false;
+            isNecro = false;
+            main_cost = 18;
+            alt_cost = 6;
+            piece_cost = 12;
+            giant_cost_vec = new int[] { main_cost, 0, alt_cost, piece_cost };
+            dragon_cost_vec = new int[] { alt_cost, main_cost, 0, piece_cost };
+            necro_cost_vec = new int[] { 0, alt_cost, main_cost, piece_cost };
+            numRune1 = 0;
+            numRune2 = 0;
+            numRune3 = 0;
+            ClearRadio();
+        }
+
+        /// <summary>
+        /// Logic to determine what actions need performed at each state
+        /// </summary>
+        private void SetState(int num)
+        {
+            if (num == 0)
+            {
+                RemoveSupplies();
+                ClearSupplies();
+                RemoveRunes();
+                ClearRunes();
+                txt_UserIn.Visible = false;
+                txt_UserIn.Text = string.Empty;
+                grp_BalanceOption.Visible = false;
+                lbl_TextToUser.Text = "Choose an option above!";
+            }
+            else if (num == 1)
+            {
+                numEnters = 0;
+                if (isBalance)
+                {
+                    SetState(0);
+                    grp_BalanceOption.Visible = true;
+                    lbl_TextToUser.Text = "Choose the number of runes to balance below!";
+                }
+                else if (isSupplies)
+                {
+                    SetState(0);
+                    lbl_TextToUser.Text = "Enter the type of rune you wish to craft in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
+                    SetRunes(1);
+                }
+                else if (isRunes)
+                {
+                    SetState(0);
+                    lbl_TextToUser.Text = "Enter your rune type in Rune 1! You can enter \"anicent\" to calculate ancient rune crafts!";
+                    SetRunes(1);
+                }
+                else
+                {
+                    WarnUser("unspecified");
+                }
+            }
+            else if (num == 2)
+            {
+                if (isRunes)
+                {
+                    rune1 = txt_Rune1.Text;
+                    if (CheckRunes(rune1))
+                    {
+                        GetRuneInfo(rune1);
+                        SetSupplies();
+                        SetIngredients();
+                        lbl_TextToUser.Text = "Enter the number of supplies, then hit enter!";
+                    }
+                    else if(!CheckRunes(rune1))
+                    {
+                        TextClear(txt_Rune1);
+                        WarnUser("rune");
+                        SetState(1);
+                    }
+                    else
+                    {
+                        WarnUser("unspecified");
+                    }
+                }
+                else if(isSupplies)
+                {
+                    rune1 = txt_Rune1.Text;
+                    if (CheckRunes(rune1))
+                    {
+                        GetRuneInfo(rune1);
+                        SetSupplies();
+                        SetIngredients();
+                        txt_UserIn.Visible = true;
+                        lbl_TextToUser.Text = "Enter the desired number of runes below, then hit enter!";
+                    }
+                    else if(!CheckRunes(rune1))
+                    {
+                        TextClear(txt_Rune1);
+                        WarnUser("rune");
+                        SetState(1);
+                    }
+                    else
+                    {
+                        WarnUser("unspecified");
+                    }
+                }
+                else if (isBalance)
+                {
+                    if (rad_Option1.Checked)
+                    {
+                        rune1 = txt_Rune1.Text;
+                        rune2 = txt_Rune2.Text;
+                        if ((CheckRunes(rune1)) && (CheckRunes(rune2)))
+                        {
+                            GetRuneInfo(rune1);
+                            GetRuneInfo(rune2);
+                            numReagents = 4;
+                            SetSupplies();
+                            SetIngredients(4);
+                            lbl_TextToUser.Text = "Enter the number of supplies, then hit enter!";
+                        }
+                        else if ((!CheckRunes(rune1)) || (!CheckRunes(rune2)))
+                        {
+                            if (!CheckRunes(rune1))
+                            {
+                                TextClear(txt_Rune1);
+                                WarnUser("rune");
+                                SetState(1);
+                            }
+                            else if (!CheckRunes(rune2))
+                            {
+                                TextClear(txt_Rune2);
+                                WarnUser("rune");
+                                SetState(1);
+                            }
+                            else
+                            {
+                                WarnUser("unspecified");
+                            }
+                        }
+                        else
+                        {
+                            WarnUser("unspecified");
+                        }
+                    }
+
+                    else if (rad_Option2.Checked)
+                    {
+                        rune1 = txt_Rune1.Text;
+                        rune2 = txt_Rune2.Text;
+                        rune3 = txt_Rune3.Text;
+                        if ((CheckRunes(rune1)) && (CheckRunes(rune2)) && (CheckRunes(rune3)))
+                        {
+                            GetRuneInfo(rune1);
+                            GetRuneInfo(rune2);
+                            GetRuneInfo(rune3);
+                            numReagents = 4;
+                            SetSupplies();
+                            SetIngredients(4);
+                            lbl_TextToUser.Text = "Enter the number of supplies, the hit enter!";
+                        }
+                        else if ((!CheckRunes(rune1)) || (!CheckRunes(rune2)) || (!CheckRunes(rune3)))
+                        {
+                            if (!CheckRunes(rune1))
+                            {
+                                TextClear(txt_Rune1);
+                                WarnUser("rune");
+                                SetState(1);
+                            }
+                            else if(!CheckRunes(rune2))
+                            {
+                                TextClear(txt_Rune2);
+                                WarnUser("rune");
+                                SetState(1);
+                            }
+                            else if (!CheckRunes(rune3))
+                            {
+                                TextClear(txt_Rune3);
+                                WarnUser("rune");
+                                SetState(1);
+                            }
+                            else
+                            {
+                                WarnUser("unspecified");
+                            }
+                        }
+                        else
+                        {
+                            WarnUser("unspecified");
+                        }
+                    }
+                    else
+                    {
+                        WarnUser("unspecified");
+                    }
+                }
+            }
+            else if (num == 3)
+            {
+                StoreSupplies();
+                if (supply1 != 0)
+                {
+                    if (isRunes)
+                    {
+                        CalculateRunes();
+                        MessageOut("runes");
+
+                    }
+                    else if (isSupplies)
+                    {
+                        CalculateSupplies();
+                        MessageOut("supplies");
+                    }
+                    else if (isBalance)
+                    {
+                        OrderRunes();
+                        CalculateBalance(new bool[] { isGiants, isDragons, isNecro });
+                        MessageOut("balance");
+                    }
+                    else
+                    {
+                        WarnUser("unspecified");
+                    }
+                }
+            }
+            else
+            {
+                WarnUser("unspecified");
+            }
+        }
+
+        /// <summary>
+        /// Reorganizes the runes that the user entered into the "correct" order for the calculator to make sense of.
+        /// </summary>
+        private void OrderRunes()
+        {
+            string[] giants = { "despair", "energy", "fatal", "blade", "swift" };
+            string[] dragons = { "violent", "focus", "guard", "endure", "shield", "revenge" };
+            string[] necro = { "rage", "will", "vampire", "nemesis", "destroy" };
+            if (rad_Option1.Checked)
+            {
+                rune1 = rune1.ToLower();
+                rune2 = rune2.ToLower();
+                string temp = "";
+                if (isGiants && isDragons)
+                {
+                    foreach (string x in giants)
+                    {
+                        if (rune2.Contains(x))
+                        {
+                            temp = rune1;
+                            rune1 = rune2;
+                            rune2 = temp;
+                        }
+                    }
+                }
+                else if (isGiants && isNecro)
+                {
+                    foreach (string x in giants)
+                    {
+                        if (rune2.Contains(x))
+                        {
+                            temp = rune1;
+                            rune1 = rune2;
+                            rune2 = temp;
+                        }
+                    }
+                }
+                else if (isDragons && isNecro)
+                {
+                    foreach (string x in dragons)
+                    {
+                        if (rune2.Contains(x))
+                        {
+                            temp = rune1;
+                            rune1 = rune2;
+                            rune2 = temp;
+                        }
+                    }
+                }
+                else if (isGiants || isDragons || isNecro)
+                {
+                    WarnUser("typeConflict");
+                    ClearRunes();
+                    SetState(2);
+                }
+                else
+                {
+                    WarnUser("unspecified");
+                }
+                txt_Rune1.Text = rune1;
+                txt_Rune2.Text = rune2;
+            }
+            else if (rad_Option2.Checked)
+            {
+                rune1 = rune1.ToLower();
+                rune2 = rune2.ToLower();
+                rune3 = rune3.ToLower();
+                string temp = "";
+                if (isGiants && isDragons && isNecro)
+                {
+                    foreach (string x in giants)
+                    {
+                        if (rune3.Contains(x))
+                        {
+                            temp = rune1;
+                            rune1 = rune3;
+                            rune3 = temp;
+                        }
+                        if (rune2.Contains(x))
+                        {
+                            temp = rune1;
+                            rune1 = rune2;
+                            rune2 = temp;
+                        }
+                    }
+                    foreach (string x in dragons)
+                    {
+                        if (rune1.Contains(x))
+                        {
+                            temp = rune2;
+                            rune2 = rune1;
+                            rune1 = temp;
+                        }
+                        if (rune3.Contains(x))
+                        {
+                            temp = rune2;
+                            rune2 = rune3;
+                            rune3 = temp;
+                        }
+                    }
+                    foreach (string x in necro)
+                    {
+                        if (rune1.Contains(x))
+                        {
+                            temp = rune3;
+                            rune3 = rune1;
+                            rune1 = temp;
+                        }
+                        if (rune2.Contains(x))
+                        {
+                            temp = rune3;
+                            rune3 = rune2;
+                            rune2 = temp;
+                        }
+                    }
+                }
+                else if(!isGiants || !isDragons || !isNecro)
+                {
+                    WarnUser("typeConflict");
+                    ClearRunes();
+                    SetState(2);
+                }
+                else
+                {
+                    WarnUser("unspecified");
+                }
+                txt_Rune1.Text = rune1;
+                txt_Rune2.Text = rune2;
+                txt_Rune3.Text = rune3;
+            }
+            else
+            {
+                WarnUser("unspecified");
+            }
+        }
+
+        /// <summary>
+        /// Method to store the inputs from user in supply group for the calculator to use later.
+        /// </summary>
+        private void StoreSupplies()
+        {
+            if (!isSupplies)
+            {
+                if (numReagents == 2)
+                {
+                    supply1 = GetInput(txt_Supply1.Text, txt_Supply1);
+                    supply2 = GetInput(txt_Supply2.Text, txt_Supply2);
+                }
+                else if (numReagents == 3)
+                {
+                    supply1 = GetInput(txt_Supply1.Text, txt_Supply1);
+                    supply2 = GetInput(txt_Supply2.Text, txt_Supply2);
+                    supply3 = GetInput(txt_Supply3.Text, txt_Supply3);
+                }
+                else if (numReagents == 4)
+                {
+                    supply1 = GetInput(txt_Supply1.Text, txt_Supply1);
+                    supply2 = GetInput(txt_Supply2.Text, txt_Supply2);
+                    supply3 = GetInput(txt_Supply3.Text, txt_Supply3);
+                    supply4 = GetInput(txt_Supply4.Text, txt_Supply4);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Method to empty all supply values
+        /// </summary>
+        private void ClearSupplies()
+        {
+            txt_Supply1.Text = string.Empty;
+            txt_Supply2.Text = string.Empty;
+            txt_Supply3.Text = string.Empty;
+            txt_Supply4.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Method to empty all rune values
+        /// </summary>
+        private void ClearRunes()
+        {
+            txt_Rune1.Text = string.Empty;
+            txt_Rune2.Text = string.Empty;
+            txt_Rune3.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Method to set visibility of runes to false
+        /// </summary>
+        private void RemoveRunes()
+        {
+            grp_Runes.Visible = false;
+            lbl_Rune1.Visible = false;
+            lbl_Rune2.Visible = false;
+            lbl_Rune3.Visible = false;
+            txt_Rune1.Visible = false;
+            txt_Rune2.Visible = false;
+            txt_Rune3.Visible = false;
+        }
 
         /// <summary>
         /// Sets the number of runes visible based on the chosen option.
@@ -197,7 +711,6 @@ namespace SWRC
                 txt_Rune2.Visible = false;
                 txt_Rune3.Visible = false;
             }
-
             else if(num == 2)
             {
                 grp_Runes.Visible = true;
@@ -208,8 +721,7 @@ namespace SWRC
                 txt_Rune2.Visible = true;
                 txt_Rune3.Visible = false;
             }
-
-            else
+            else if (num == 3)
             {
                 grp_Runes.Visible = true;
                 lbl_Rune1.Visible = true;
@@ -218,6 +730,10 @@ namespace SWRC
                 txt_Rune1.Visible = true;
                 txt_Rune2.Visible = true;
                 txt_Rune3.Visible = true;
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
         }
 
@@ -230,13 +746,15 @@ namespace SWRC
             {
                 return null;
             }
-
-            if (str.Length > 1)
+            else if (str.Length > 1)
             {
                 str = str.ToLower();
                 return char.ToUpper(str[0]) + str.Substring(1);
             }
-
+            else
+            {
+                WarnUser("unspecified");
+            }
             return str.ToUpper();
         }
 
@@ -264,7 +782,7 @@ namespace SWRC
                 txt_Supply3.Text = reagentTotals[2].ToString();
                 txt_Supply4.Text = reagentTotals[3].ToString();
             }
-            else
+            else if (messageType.Equals("balance"))
             {
                 if (rad_Option1.Checked)
                 {
@@ -275,8 +793,7 @@ namespace SWRC
                         + "It will cost " + toFormat + " mana stones! Be sure to save up!" + '\n' +
                         "You should get approximately " + numLegend + " legendary 6* runes!";
                 }
-
-                else
+                else if (rad_Option2.Checked)
                 {
                     rune1 = FirstLetterToUpper(rune1);
                     rune2 = FirstLetterToUpper(rune2);
@@ -287,6 +804,14 @@ namespace SWRC
                         + "It will cost " + toFormat + " mana stones! Be sure to save up!" + '\n' +
                         "You should get approximately " + numLegend + " legendary 6* runes!";
                 }
+                else
+                {
+                    WarnUser("unspecified");
+                }
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
         }
 
@@ -321,7 +846,6 @@ namespace SWRC
                 txt_Supply1.Visible = true;
                 txt_Supply2.Visible = true;
             }
-
             else if (numReagents == 3)
             {
                 lbl_Supply1.Visible = true;
@@ -331,8 +855,7 @@ namespace SWRC
                 txt_Supply2.Visible = true;
                 txt_Supply3.Visible = true;
             }
-
-            else
+            else if (numReagents == 4)
             {
                 lbl_Supply1.Visible = true;
                 lbl_Supply2.Visible = true;
@@ -342,6 +865,10 @@ namespace SWRC
                 txt_Supply2.Visible = true;
                 txt_Supply3.Visible = true;
                 txt_Supply4.Visible = true;
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
         }
 
@@ -355,20 +882,22 @@ namespace SWRC
                 lbl_Supply1.Text = ingredients[0];
                 lbl_Supply2.Text = ingredients[1];
             }
-
             else if (ingredients.Length == 3)
             {
                 lbl_Supply1.Text = ingredients[0];
                 lbl_Supply2.Text = ingredients[1];
                 lbl_Supply3.Text = ingredients[2];
             }
-
-            else
+            else if(ingredients.Length == 4)
             {
                 lbl_Supply1.Text = ingredients[0];
                 lbl_Supply2.Text = ingredients[1];
                 lbl_Supply3.Text = ingredients[2];
                 lbl_Supply4.Text = ingredients[3];
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
 
         }
@@ -406,18 +935,53 @@ namespace SWRC
         private int GetInput(string input, TextBox box)
         {
             int numCheck = -1;
-            if (int.TryParse(input, out numCheck))
+            if (box.Equals(txt_UserIn))
             {
-                return numCheck;
+                if (int.TryParse(input, out numCheck))
+                {
+                    if((numCheck < 0) || (numCheck > 555))
+                    {
+                        TextClear(box);
+                        WarnUser("numberSupplies");
+                        SetState(2);
+                    }
+                    else
+                    {
+                        return numCheck;
+                    }
+                }
+                else
+                {
+                    TextClear(box);
+                    WarnUser("numberSupplies");
+                    SetState(2);
+                    return -1; // or error int
+                }
             }
             else
             {
-                TextClear(box);
-                string title = "Error";
-                string message = "Please enter a number between 0 and 99999";
-                MessageBox.Show(message, title);
-                return -1; // or error int
+                if (int.TryParse(input, out numCheck))
+                {
+                    if ((numCheck < 0) || (numCheck > 9999))
+                    {
+                        TextClear(box);
+                        WarnUser("number");
+                        SetState(2);
+                    }
+                    else
+                    {
+                        return numCheck;
+                    }
+                }
+                else
+                {
+                    TextClear(box);
+                    WarnUser("number");
+                    SetState(2);
+                    return -1; // or error int
+                }
             }
+            return -1;
         }
 
         #endregion
@@ -428,127 +992,24 @@ namespace SWRC
         #region Change State
 
         /// <summary>
-        /// Moves from state 0 to state 1 to state 2
+        /// Moves the program from state 1 to state 2 to state 3
         /// </summary>
         private void btn_Enter_Click(object sender, EventArgs e)
         {
             numEnters++;
-            rune1 = txt_Rune1.Text;
-            rune2 = txt_Rune2.Text;
-            rune3 = txt_Rune3.Text;
-            supply1 = GetInput(txt_Supply1.Text, txt_Supply1);
-            supply2 = GetInput(txt_Supply2.Text, txt_Supply2);
-            supply3 = GetInput(txt_Supply3.Text, txt_Supply3);
-            supply4 = GetInput(txt_Supply4.Text, txt_Supply4);
-            
-
-            NextStep();
-        }
-
-        /// <summary>
-        /// Logic to determine what actions need performed at each state
-        /// </summary>
-        private void NextStep()
-        {
-            if ((numEnters == 1) && runes)
+            if(numEnters == 1)
             {
-                if (CheckRunes(rune1))
-                {
-                    GetRuneInfo(rune1);
-                    SetSupplies();
-                    SetIngredients();
-                    lbl_TextToUser.Text = "Enter the number of supplies, then hit enter!";
-                }
-                else
-                {
-                    TextClear(txt_Rune1);
-                    lbl_TextToUser.Text = "Please enter a valid rune!";
-                    numEnters = 0;
-                }
+                SetState(2);
             }
-
-            if ((numEnters == 1) && supplies)
+            else if(numEnters > 1)
             {
-                if (CheckRunes(rune1))
-                {
-                    GetRuneInfo(rune1);
-                    SetSupplies();
-                    SetIngredients();
-                    txt_UserIn.Visible = true;
-                    lbl_TextToUser.Text = "Enter the desired number of runes below, then hit enter!";
-                }
-                else
-                {
-                    TextClear(txt_Rune1);
-                    lbl_TextToUser.Text = "Please enter a valid rune!";
-                    numEnters = 0;
-                }
+                SetState(3);
             }
-
-            if ((numEnters == 1) && isBalance)
+            else
             {
-                if (rad_Option1.Checked)
-                {
-                    if((CheckRunes(rune1)) && CheckRunes(rune2))
-                    {
-                        GetRuneInfo(rune1);
-                        GetRuneInfo(rune2);
-                        numReagents = 4;
-                        SetSupplies();
-                        SetIngredients(4);
-                        lbl_TextToUser.Text = "Enter the number of supplies, then hit enter!";
-                    }
-                    else
-                    {
-                        TextClear(txt_Rune1);
-                        TextClear(txt_Rune2);
-                        lbl_TextToUser.Text = "Please enter a valid rune!";
-                        numEnters = 0;
-                    }
-                }
-
-                if (rad_Option2.Checked){
-                    if((CheckRunes(rune1)) && (CheckRunes(rune2)) && (CheckRunes(rune3)))
-                    {
-                        GetRuneInfo(rune1);
-                        GetRuneInfo(rune2);
-                        GetRuneInfo(rune3);
-                        numReagents = 4;
-                        SetSupplies();
-                        SetIngredients(4);
-                        lbl_TextToUser.Text = "Enter the number of supplies, the hit enter!";
-                    }
-                    else
-                    {
-                        TextClear(txt_Rune1);
-                        TextClear(txt_Rune2);
-                        TextClear(txt_Rune3);
-                        lbl_TextToUser.Text = "Please enter a valid rune!";
-                        numEnters = 0;
-                    }
-                }
-            }
-
-            if ((numEnters >= 2) && runes)
-            {
-                CalculateRunes();
-                MessageOut("runes");
-
-            }
-
-            if ((numEnters >= 2) && supplies)
-            {
-                CalculateSupplies();
-                MessageOut("supplies");
-            }
-
-            if ((numEnters == 2) && isBalance)
-            {
-                CalculateBalance(new bool[] { isGiants, isDragons, isNecro });
-                MessageOut("balance");
+                WarnUser("unspecified");
             }
         }
-
         #endregion
 
         /// <summary>
@@ -657,7 +1118,6 @@ namespace SWRC
                 totalCost = cost * numRunes;
                 numLegend = (int)(numRunes * 0.03);
             }
-
             else if(numReagents == 3)
             {
                 int primary = reagentTotals[0] / 18;
@@ -668,8 +1128,7 @@ namespace SWRC
                 totalCost = cost * numRunes;
                 numLegend = (int)(numRunes * 0.03);
             }
-
-            else
+            else if(numReagents == 4)
             {
                 int primary = reagentTotals[0] / 60;
                 int secondary = reagentTotals[1] / 20;
@@ -679,6 +1138,10 @@ namespace SWRC
                 numRunes = Smaller(primary, secondary, tertiary, quaternary);
                 totalCost = cost * numRunes;
                 numLegend = (int)(numRunes * 0.03);
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
         }
 
@@ -697,7 +1160,6 @@ namespace SWRC
                 totalCost = targetTotal * cost;
                 numLegend = (int)(targetTotal * 0.03);
             }
-
             else if (numReagents == 3)
             {
                 reagentTotals[0] = targetTotal * 18;
@@ -707,8 +1169,7 @@ namespace SWRC
                 totalCost = targetTotal * cost;
                 numLegend = (int)(targetTotal * 0.03);
             }
-
-            else
+            else if (numReagents == 4)
             {
                 reagentTotals[0] = targetTotal * 60;
                 reagentTotals[1] = targetTotal * 20;
@@ -717,6 +1178,10 @@ namespace SWRC
                 cost = 15000;
                 totalCost = targetTotal * cost;
                 numLegend = (int)(targetTotal * 0.03);
+            }
+            else
+            {
+                WarnUser("unspecified");
             }
         }
 
@@ -957,19 +1422,5 @@ namespace SWRC
             return (Math.Min(min, min2));
         }
         #endregion
-
-
-        /// <summary>
-        /// TODO LIST
-        /// </summary>
-        /* Catch improper integer inputs in supply boxes, move back to re-inputing the supplies.
-         * Focus the selection to select the number in the box when the user clicks on the box.
-         * Clear the text boxes as the user moves from one menu option to the next.
-         * Display message box when invalid rune name is chosen.
-         * Add a check to ensure that the integer inputs in supplies are between 0 and 9999.
-         * Add a way to sort the runes entered in rune choices for balance to  Giants > Dragons > Necro.
-         * Add a check to ensure that the integer inputs in txt_UserIn are between 0 and 555.
-         * Make the program an executable.
-         */
     }
 }
