@@ -1,3 +1,7 @@
+import javax.swing.*;
+import java.awt.*;
+import java.io.PrintStream;
+
 /** Justin Ayers. 4/16/2021. A personal note.
  * This is a project that I am creating for a mobile video game called Summoner's War.
  *  In this game, one of the many, many things you can do is collect crafting ingredients.
@@ -22,6 +26,38 @@
 public class Craft {
     public static void main(String[] args){
 
+        //Creating the Frame
+        JFrame frame = new JFrame("Summoner's War Rune Craft");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(600, 700);
+
+
+        //Creating the panel at bottom and adding components
+        JPanel panel = new JPanel(); // the panel is not visible in output
+        JLabel label = new JLabel("Enter Text");
+        JTextField tf = new JTextField(15); // accepts up to 15 characters
+
+
+        JButton send = new JButton("Send");
+        panel.add(label); // Components Added using Flow Layout
+        panel.add(tf);
+        panel.add(send);
+
+        // Text Area at the Center
+        JTextArea ta = new JTextArea();
+        PrintStream printStream = new PrintStream(new CustomOutputStream(ta));
+        System.setOut(printStream);
+        System.setErr(printStream);
+
+        //Adding Components to the frame.
+        frame.getContentPane().add(BorderLayout.SOUTH, panel);
+        frame.getContentPane().add(BorderLayout.CENTER, ta);
+        frame.setVisible(true);
+
+
+
+
         Intro.intro();
     }
+
 }
