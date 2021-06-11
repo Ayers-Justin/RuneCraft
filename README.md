@@ -19,5 +19,5 @@ Known and discovered bugs and issues:
 - Balance feature incorrectly includes an excluded value when used for 2 rune types.
 - Calculate supplies feature stopped working. Does nothing.
 - Balance help is too interefering. Began update to shift help to a help button that the user can choose to use, instead of forced.
-- Window not resizing was a poor choice, some users want that control over window size. Bagan update to allow user control of window size.
+- Window not resizing was a poor choice, some users want that control over window size. Began update to allow user control of window size.
 - I'm sure more will come.
