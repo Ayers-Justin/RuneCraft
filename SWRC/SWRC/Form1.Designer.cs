@@ -55,6 +55,7 @@ namespace SWRC
             this.rad_Option2 = new System.Windows.Forms.RadioButton();
             this.grp_BalanceOption = new System.Windows.Forms.GroupBox();
             this.btn_Enter = new System.Windows.Forms.Button();
+            this.btn_Help = new System.Windows.Forms.Button();
             this.grp_Supplies.SuspendLayout();
             this.grp_Runes.SuspendLayout();
             this.grp_BalanceOption.SuspendLayout();
@@ -96,7 +97,7 @@ namespace SWRC
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txt_UserIn.Location = new System.Drawing.Point(12, 351);
             this.txt_UserIn.Name = "txt_UserIn";
-            this.txt_UserIn.Size = new System.Drawing.Size(246, 23);
+            this.txt_UserIn.Size = new System.Drawing.Size(248, 23);
             this.txt_UserIn.TabIndex = 4;
             this.txt_UserIn.Text = "0";
             this.txt_UserIn.Visible = false;
@@ -210,7 +211,7 @@ namespace SWRC
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_TextToUser.Location = new System.Drawing.Point(12, 29);
             this.lbl_TextToUser.Name = "lbl_TextToUser";
-            this.lbl_TextToUser.Size = new System.Drawing.Size(130, 240);
+            this.lbl_TextToUser.Size = new System.Drawing.Size(130, 209);
             this.lbl_TextToUser.TabIndex = 6;
             this.lbl_TextToUser.Text = "Choose an option above!";
             // 
@@ -319,7 +320,7 @@ namespace SWRC
             // 
             this.grp_BalanceOption.Controls.Add(this.rad_Option1);
             this.grp_BalanceOption.Controls.Add(this.rad_Option2);
-            this.grp_BalanceOption.Location = new System.Drawing.Point(12, 289);
+            this.grp_BalanceOption.Location = new System.Drawing.Point(13, 260);
             this.grp_BalanceOption.Name = "grp_BalanceOption";
             this.grp_BalanceOption.Size = new System.Drawing.Size(181, 46);
             this.grp_BalanceOption.TabIndex = 10;
@@ -332,11 +333,22 @@ namespace SWRC
             this.btn_Enter.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Enter.Location = new System.Drawing.Point(266, 351);
             this.btn_Enter.Name = "btn_Enter";
-            this.btn_Enter.Size = new System.Drawing.Size(68, 23);
+            this.btn_Enter.Size = new System.Drawing.Size(74, 23);
             this.btn_Enter.TabIndex = 11;
             this.btn_Enter.Text = "Enter";
             this.btn_Enter.UseVisualStyleBackColor = true;
             this.btn_Enter.Click += new System.EventHandler(this.btn_Enter_Click);
+            // 
+            // btn_Help
+            // 
+            this.btn_Help.Location = new System.Drawing.Point(109, 312);
+            this.btn_Help.Name = "btn_Help";
+            this.btn_Help.Size = new System.Drawing.Size(85, 23);
+            this.btn_Help.TabIndex = 12;
+            this.btn_Help.Text = "Balance Help";
+            this.btn_Help.UseVisualStyleBackColor = true;
+            this.btn_Help.Visible = false;
+            this.btn_Help.Click += new System.EventHandler(this.btn_Help_Click);
             // 
             // Form1
             // 
@@ -344,6 +356,7 @@ namespace SWRC
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(352, 386);
+            this.Controls.Add(this.btn_Help);
             this.Controls.Add(this.btn_Enter);
             this.Controls.Add(this.grp_BalanceOption);
             this.Controls.Add(this.grp_Runes);
@@ -353,10 +366,8 @@ namespace SWRC
             this.Controls.Add(this.btn_CalcBalance);
             this.Controls.Add(this.btn_CalcSup);
             this.Controls.Add(this.btn_CalcRune);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(368, 425);
             this.MinimumSize = new System.Drawing.Size(368, 425);
             this.Name = "Form1";
             this.Text = "Summoner\'s War Rune Crafting";
@@ -397,6 +408,7 @@ namespace SWRC
         private System.Windows.Forms.RadioButton rad_Option2;
         private System.Windows.Forms.GroupBox grp_BalanceOption;
         private System.Windows.Forms.Button btn_Enter;
+        private System.Windows.Forms.Button btn_Help;
     }
 }
 

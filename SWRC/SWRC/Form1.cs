@@ -161,7 +161,6 @@ namespace SWRC
             ClearRunes();
             SetRunes(2);
             lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
-            BalanceInfo();
         }
 
         /// <summary>
@@ -172,7 +171,6 @@ namespace SWRC
             ClearRunes();
             SetRunes(3);
             lbl_TextToUser.Text = "Type the runes you want to balance in Rune Choice, and hit enter!";
-            BalanceInfo();
         }
 
         #endregion
@@ -192,6 +190,14 @@ namespace SWRC
                 "please ensure that you are choosing runes that drop from different dungeons. Remember, this is Cairos only, so you may only choose from" +
                 " Giants, Dragons, or Necropolis. Thank you!";
             MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Button to call BalanceInfo();
+        /// </summary>
+        private void btn_Help_Click(object sender, EventArgs e)
+        {
+            BalanceInfo();
         }
 
         /// <summary>
@@ -296,6 +302,7 @@ namespace SWRC
                 ClearSupplies();
                 RemoveRunes();
                 ClearRunes();
+                btn_Help.Visible = false;
                 txt_UserIn.Visible = false;
                 txt_UserIn.Text = string.Empty;
                 grp_BalanceOption.Visible = false;
@@ -308,6 +315,7 @@ namespace SWRC
                 {
                     SetState(0);
                     grp_BalanceOption.Visible = true;
+                    btn_Help.Visible = true;
                     lbl_TextToUser.Text = "Choose the number of runes to balance below!";
                 }
                 else if (isSupplies)
@@ -1421,6 +1429,19 @@ namespace SWRC
             int min2 = Math.Min(tertiary, quaternary);
             return (Math.Min(min, min2));
         }
+
         #endregion
+
+        /// <summary>
+        /// Known bugs and features to update
+        /// </summary>
+        /* Make rune choice a list menu.
+         * Resizeable window <done>
+         * balance is not excluding.
+         * change the popup of balance info to a help button <done>
+         * calculate supplies is broken wont calculate when the number is entered
+         * the errors regarding using the same dungeon runes for balance arent working right
+         * 
+         */
     }
 }
