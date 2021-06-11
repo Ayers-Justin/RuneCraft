@@ -15,5 +15,9 @@ Features of the calculator include:
 I will be taking user feedback and working out bugs as they become apparent. Please email bug discoveries and details surrounding the bug to eternaldark66@gmail.com.
 I will have an updated list of known and discovered bugs at the bottom of this README, so please check the list before emailing!
 
-Known and discovered bugs:
-- None
+Known and discovered bugs and issues:
+- Balance feature incorrectly includes an excluded value when used for 2 rune types.
+- Calculate supplies feature stopped working. Does nothing.
+- Balance help is too interefering. Began update to shift help to a help button that the user can choose to use, instead of forced.
+- Window not resizing was a poor choice, some users want that control over window size. Bagan update to allow user control of window size.
+- I'm sure more will come.
