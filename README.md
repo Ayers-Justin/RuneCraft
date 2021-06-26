@@ -21,3 +21,8 @@ Known and discovered bugs and issues:
 - Balance help is too interefering. Began update to shift help to a help button that the user can choose to use, instead of forced.
 - Window not resizing was a poor choice, some users want that control over window size. Began update to allow user control of window size.
 - I'm sure more will come.
+
+
+
+
+IMPORTANT UPDATE: Due to the recent Monster Skill "Balancing" Modification and "Improvement" (06/26/21), I am taking a break from this project. I will no longer play Summoner's War if they go through with this particular patch. I may return to the project to resolve outstanding bugs.
