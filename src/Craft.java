@@ -26,7 +26,7 @@ import java.io.PrintStream;
 public class Craft {
 
     public static void main(String[] args){
-
+/*
         //Creating the Frame
         JFrame frame = new JFrame("Summoner's War Rune Craft");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,7 +54,7 @@ public class Craft {
         frame.getContentPane().add(BorderLayout.SOUTH, panel);
         frame.getContentPane().add(BorderLayout.CENTER, ta);
         frame.setVisible(true);
-
+*/
 
 
 
